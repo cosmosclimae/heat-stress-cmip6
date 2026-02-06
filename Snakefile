@@ -1,4 +1,5 @@
 configfile: "config/config.yml"
+
 NEX_IN = config["nexgddp_in"]
 OUT = config["nexgddp_out"]
 
@@ -8,22 +9,19 @@ ERA5_PACK = config["era5_pack"]
 
 MODELS = config["models"]
 
-SCEN_WINDOWS = {
-    "historical": ("1991", "2014"),
-    "ssp126": ("2015", "2100"),
-    "ssp245": ("2020", "2100"),
-    "ssp585": ("2020", "2100"),
-}
-
 FUTURE_WINDOWS = config["future_windows"]
 SSPS_FUTURE = config["ssps_for_future"]
 
 def scen_file(model, scen):
-    y0, y1 = SCEN_WINDOWS[scen]
-    return f"{OUT}/{model}/{scen}/HEATSTRESS_mon_{model}_{scen}_{y0}-{y1}.nc"
-
-def future_pack_file(model, scen, win_name):
-    return f"{OUT}/{model}/packs/HEATSTRESS_pack_{model}_{scen}_{win_name}.nc"
+    if scen == "historical":
+        return f"{OUT}/{model}/historical/HEATSTRESS_mon_{model}_historical_1991-2014.nc"
+    if scen == "ssp126":
+        return f"{OUT}/{model}/ssp126/HEATSTRESS_mon_{model}_ssp126_2015-2100.nc"
+    if scen == "ssp245":
+        return f"{OUT}/{model}/ssp245/HEATSTRESS_mon_{model}_ssp245_2020-2100.nc"
+    if scen == "ssp585":
+        return f"{OUT}/{model}/ssp585/HEATSTRESS_mon_{model}_ssp585_2020-2100.nc"
+    raise ValueError(f"Unknown scenario: {scen}")
 
 rule all:
     input:
@@ -33,7 +31,7 @@ rule all:
         expand(scen_file("{model}", "ssp245"), model=MODELS),
         expand(scen_file("{model}", "ssp585"), model=MODELS),
         expand(f"{OUT}/{{model}}/packs/HEATSTRESS_pack_{{model}}_pseudoHist_1991-2020.nc", model=MODELS),
-        expand(future_pack_file("{model}", "{scen}", "{win}"),
+        expand(f"{OUT}/{{model}}/packs/HEATSTRESS_pack_{{model}}_{{scen}}_{{win}}.nc",
                model=MODELS,
                scen=SSPS_FUTURE,
                win=[w["name"] for w in FUTURE_WINDOWS])
@@ -44,14 +42,29 @@ rule era5_monthly_1991_2020:
     shell:
         "bash pipeline/heatstress_era5_monthly_snake.sh {ERA5_IN} {ERA5_OUTDIR}"
 
-rule compute_monthly:
+rule compute_historical:
     output:
-        lambda wc: scen_file(wc.model, wc.scen)
-    params:
-        model="{model}",
-        scen="{scen}"
+        f"{OUT}/{{model}}/historical/HEATSTRESS_mon_{{model}}_historical_1991-2014.nc"
     shell:
-        "bash pipeline/heatstress_nexgddp_monthly_snake.sh {NEX_IN} {OUT} {params.model} {params.scen}"
+        "bash pipeline/heatstress_nexgddp_monthly_snake.sh {NEX_IN} {OUT} {wildcards.model} historical"
+
+rule compute_ssp126:
+    output:
+        f"{OUT}/{{model}}/ssp126/HEATSTRESS_mon_{{model}}_ssp126_2015-2100.nc"
+    shell:
+        "bash pipeline/heatstress_nexgddp_monthly_snake.sh {NEX_IN} {OUT} {wildcards.model} ssp126"
+
+rule compute_ssp245:
+    output:
+        f"{OUT}/{{model}}/ssp245/HEATSTRESS_mon_{{model}}_ssp245_2020-2100.nc"
+    shell:
+        "bash pipeline/heatstress_nexgddp_monthly_snake.sh {NEX_IN} {OUT} {wildcards.model} ssp245"
+
+rule compute_ssp585:
+    output:
+        f"{OUT}/{{model}}/ssp585/HEATSTRESS_mon_{{model}}_ssp585_2020-2100.nc"
+    shell:
+        "bash pipeline/heatstress_nexgddp_monthly_snake.sh {NEX_IN} {OUT} {wildcards.model} ssp585"
 
 rule pseudo_hist_pack_1991_2020:
     input:
@@ -67,10 +80,12 @@ rule future_pack:
     input:
         lambda wc: scen_file(wc.model, wc.scen)
     output:
-        lambda wc: future_pack_file(wc.model, wc.scen, wc.win)
+        f"{OUT}/{{model}}/packs/HEATSTRESS_pack_{{model}}_{{scen}}_{{win}}.nc"
     params:
         start=lambda wc: next(w["start"] for w in FUTURE_WINDOWS if w["name"] == wc.win),
         end=lambda wc: next(w["end"] for w in FUTURE_WINDOWS if w["name"] == wc.win)
+    wildcard_constraints:
+        scen="ssp126|ssp245|ssp585"
     shell:
         "mkdir -p $(dirname {output}) && "
         "cdo -L -z zip_5 seldate,{params.start},{params.end} {input} {output}"

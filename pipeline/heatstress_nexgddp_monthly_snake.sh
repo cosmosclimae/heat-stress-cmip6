@@ -7,7 +7,7 @@ shopt -s nullglob
 # Snakemake-compatible version with stable outputs.
 #
 # Inputs (daily):
-#   /mnt/e/CMIP6/NEX-GDDP/[model]/[scenario]/[var]/
+#   IN_ROOT/[model]/[scenario]/[var]/
 #     [var]_day_[model]_[scen]_<member+grid>_<year>_v2.0.nc
 #
 # Uses only: tas (K), tasmax (K), hurs (% 0..100)
@@ -19,8 +19,7 @@ shopt -s nullglob
 #   ssp585    : 2020-01-01 .. 2100-12-31
 #
 # Outputs (monthly, final sliced):
-#   ${OUT_ROOT}/${MODEL}/${SCEN}/HEATSTRESS_mon_${MODEL}_${SCEN}_${START}-${END}.nc
-# with START/END fixed per scenario above.
+#   OUT_ROOT/MODEL/SCEN/HEATSTRESS_mon_MODEL_SCEN_START-END.nc
 ############################################
 
 # Usage: $0 IN_ROOT OUT_ROOT MODEL SCEN
@@ -34,14 +33,6 @@ OUT_ROOT="$2"
 MODEL="$3"
 SCEN="$4"
 VERSION_TAG="v2.0"
-
-if [ "$#" -ne 2 ]; then
-  echo "Usage: $0 MODEL SCEN" >&2
-  exit 1
-fi
-
-MODEL="$1"
-SCEN="$2"
 
 case "${SCEN}" in
   historical)
@@ -65,8 +56,8 @@ TAS_DIR="${IN_DIR}/tas"
 HURS_DIR="${IN_DIR}/hurs"
 
 [ -d "${TASMAX_DIR}" ] || { echo "[ERROR] Missing ${TASMAX_DIR}" >&2; exit 3; }
-[ -d "${TAS_DIR}" ] || { echo "[ERROR] Missing ${TAS_DIR}" >&2; exit 3; }
-[ -d "${HURS_DIR}" ] || { echo "[ERROR] Missing ${HURS_DIR}" >&2; exit 3; }
+[ -d "${TAS_DIR}" ]    || { echo "[ERROR] Missing ${TAS_DIR}" >&2; exit 3; }
+[ -d "${HURS_DIR}" ]   || { echo "[ERROR] Missing ${HURS_DIR}" >&2; exit 3; }
 
 OUT_DIR="${OUT_ROOT}/${MODEL}/${SCEN}"
 mkdir -p "${OUT_DIR}"
@@ -81,7 +72,6 @@ echo "==== Heat-stress monthly: model=${MODEL} scen=${SCEN} window=${START}..${E
 
 YEARLY_MON_FILES=()
 
-# Loop tasmax yearly files
 for TASMAX_FILE in "${TASMAX_DIR}/tasmax_day_${MODEL}_${SCEN}_"*"_${VERSION_TAG}.nc"; do
   BASENAME="$(basename "${TASMAX_FILE}")"
   PREFIX="tasmax_day_${MODEL}_${SCEN}_"
@@ -95,11 +85,10 @@ for TASMAX_FILE in "${TASMAX_DIR}/tasmax_day_${MODEL}_${SCEN}_"*"_${VERSION_TAG}
     continue
   fi
 
-  # Year extraction (robust)
-  YEAR="$(echo "${BASENAME}" | grep -oE '_[0-9]{4}_'"${VERSION_TAG//./\\.}"'\.nc$' | tr -dc '0-9')"
+  YEAR="$(echo "${BASENAME}" | sed -n 's/.*_\([0-9]\{4\}\)_v2\.0\.nc$/\1/p')"
   [ -n "${YEAR}" ] || { echo "  [WARN] No year parsed from ${BASENAME} -> skip" >&2; continue; }
 
-  OUT_MON_YEAR="${OUT_DIR}/heatstress_mon_${MODEL}_${SCEN}_${YEAR}.nc"
+  OUT_MON_YEAR="${OUT_DIR}/HEATSTRESS_mon_${MODEL}_${SCEN}_${YEAR}.nc"
   YEARLY_MON_FILES+=("${OUT_MON_YEAR}")
 
   if [ -f "${OUT_MON_YEAR}" ]; then
@@ -109,7 +98,6 @@ for TASMAX_FILE in "${TASMAX_DIR}/tasmax_day_${MODEL}_${SCEN}_"*"_${VERSION_TAG}
   TMP_DAY="$(mktemp --suffix=.nc)"
   TMP_MON="$(mktemp --suffix=.nc)"
 
-  # Daily indices + flags
   cdo -L -z zip_5 \
     -expr,"\
       tmean = tas - 273.15; \
@@ -147,14 +135,12 @@ for TASMAX_FILE in "${TASMAX_DIR}/tasmax_day_${MODEL}_${SCEN}_"*"_${VERSION_TAG}
     -merge "${TAS_FILE}" "${TASMAX_FILE}" "${HURS_FILE}" \
     "${TMP_DAY}"
 
-  # Monthly aggregate
   cdo -L -z zip_5 \
     -merge \
       -monmean -selname,tw,wbgt,hi,humidex "${TMP_DAY}" \
       -monsum  -selname,f_tw_ge35,f_wbgt_ge30,f_wbgt_ge32 "${TMP_DAY}" \
     "${TMP_MON}"
 
-  # Rename + write yearly monthly
   cdo -L -z zip_5 \
     -chname,tw,tw_mean,wbgt,wbgt_mean,hi,hi_mean,humidex,humidex_mean,\
 f_tw_ge35,ndays_tw_ge35,f_wbgt_ge30,ndays_wbgt_ge30,f_wbgt_ge32,ndays_wbgt_ge32 \
@@ -168,13 +154,11 @@ if [ "${#YEARLY_MON_FILES[@]}" -eq 0 ]; then
   exit 4
 fi
 
-# Merge time then slice exact window
 TMP_MERGED="$(mktemp --suffix=.nc)"
 cdo -L -z zip_5 mergetime "${YEARLY_MON_FILES[@]}" "${TMP_MERGED}"
 
-# Slice to scenario window (this enforces your dates)
 cdo -L -z zip_5 seldate,"${START}","${END}" "${TMP_MERGED}" "${FINAL_OUT}"
 
-rm -f "${TMP_MERGED}"
+rm -f "${TMP_MERGED}" "${YEARLY_MON_FILES[@]}"
 
 echo "[OK] Wrote ${FINAL_OUT}"
