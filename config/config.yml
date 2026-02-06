@@ -1,0 +1,22 @@
+nexgddp_in: /mnt/e/CMIP6/NEX-GDDP
+nexgddp_out: /mnt/c/Data/HEAT_STRESS_MONTHLY
+
+era5_in: /mnt/e/CMIP6/ERA5
+era5_outdir: /mnt/e/CMIP6/ERA5/derived
+era5_pack: /mnt/e/CMIP6/ERA5/derived/HEATSTRESS_mon_ERA5_gr025_1991-2020.nc
+
+models:
+  - IPSL-CM6A-LR
+  - MPI-ESM1-2-HR
+  - MRI-ESM2-0
+  - UKESM1-0-LL
+  - GFDL-ESM4
+
+future_windows:
+  - {name: "2041-2070", start: "2041-01-01", end: "2070-12-31"}
+  - {name: "2071-2100", start: "2071-01-01", end: "2100-12-31"}
+
+ssps_for_future:
+  - ssp126
+  - ssp245
+  - ssp585
