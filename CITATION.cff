@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+title: "Monthly heat-stress indicators from ERA5 and CMIP6"
+message: "If you use this software, please cite it as below."
+type: software
+authors:
+  - family-names: Defrance
+    given-names: Dimitri
+  - name: "CosmosClimae Association"
+date-released: 2026-02-06
+license: MIT
