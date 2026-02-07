@@ -1,0 +1,62 @@
+Assuming unrestricted shared filesystem usage.
+host: CosmosClimae
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Job stats:
+job                           count
+--------------------------  -------
+all                               1
+compute_historical                4
+compute_ssp126                    5
+compute_ssp245                    5
+compute_ssp585                    5
+era5_monthly_1991_2020            1
+future_pack                      30
+pseudo_hist_pack_1991_2020        5
+total                            56
+
+Select jobs to execute...
+Execute 4 jobs...
+[Fri Feb  6 21:29:23 2026]
+localrule era5_monthly_1991_2020:
+    output: /mnt/e/CMIP6/ERA5/derived/HEATSTRESS_mon_ERA5_gr025_1991-2020.nc
+    jobid: 1
+    reason: Missing output files: /mnt/e/CMIP6/ERA5/derived/HEATSTRESS_mon_ERA5_gr025_1991-2020.nc
+    resources: tmpdir=/tmp
+[Fri Feb  6 21:29:23 2026]
+localrule compute_historical:
+    output: /mnt/c/Data/HEAT_STRESS_MONTHLY/UKESM1-0-LL/historical/HEATSTRESS_mon_UKESM1-0-LL_historical_1991-2014.nc
+    jobid: 5
+    reason: Missing output files: /mnt/c/Data/HEAT_STRESS_MONTHLY/UKESM1-0-LL/historical/HEATSTRESS_mon_UKESM1-0-LL_historical_1991-2014.nc
+    wildcards: model=UKESM1-0-LL
+    resources: tmpdir=/tmp
+[Fri Feb  6 21:29:23 2026]
+localrule compute_ssp245:
+    output: /mnt/c/Data/HEAT_STRESS_MONTHLY/UKESM1-0-LL/ssp245/HEATSTRESS_mon_UKESM1-0-LL_ssp245_2020-2100.nc
+    jobid: 15
+    reason: Missing output files: /mnt/c/Data/HEAT_STRESS_MONTHLY/UKESM1-0-LL/ssp245/HEATSTRESS_mon_UKESM1-0-LL_ssp245_2020-2100.nc
+    wildcards: model=UKESM1-0-LL
+    resources: tmpdir=/tmp
+RuleException:
+CalledProcessError in file "/mnt/e/Project_SNAKE/heat-stress-cmip6/Snakefile", line 43:
+Command 'set -euo pipefail;  bash pipeline/heatstress_era5_monthly_snake.sh /mnt/e/CMIP6/ERA5 /mnt/e/CMIP6/ERA5/derived' returned non-zero exit status 1.
+[Fri Feb  6 21:29:24 2026]
+Error in rule era5_monthly_1991_2020:
+    message: None
+    jobid: 1
+    output: /mnt/e/CMIP6/ERA5/derived/HEATSTRESS_mon_ERA5_gr025_1991-2020.nc
+    shell:
+        bash pipeline/heatstress_era5_monthly_snake.sh /mnt/e/CMIP6/ERA5 /mnt/e/CMIP6/ERA5/derived
+        (command exited with non-zero exit code)
+[Fri Feb  6 21:29:24 2026]
+localrule compute_ssp126:
+    output: /mnt/c/Data/HEAT_STRESS_MONTHLY/MPI-ESM1-2-HR/ssp126/HEATSTRESS_mon_MPI-ESM1-2-HR_ssp126_2015-2100.nc
+    jobid: 8
+    reason: Missing output files: /mnt/c/Data/HEAT_STRESS_MONTHLY/MPI-ESM1-2-HR/ssp126/HEATSTRESS_mon_MPI-ESM1-2-HR_ssp126_2015-2100.nc
+    wildcards: model=MPI-ESM1-2-HR
+    resources: tmpdir=/tmp
+[Fri Feb  6 23:23:21 2026]
+Finished jobid: 5 (Rule: compute_historical)
+1 of 56 steps (2%) done

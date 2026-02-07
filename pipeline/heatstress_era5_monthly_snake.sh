@@ -2,19 +2,13 @@
 set -euo pipefail
 
 # Usage: $0 IN_DIR OUT_DIR
-if [ "$#" -lt 4 ]; then
-  echo "Usage: $0 NEX_IN OUT MODEL SCEN" >&2
+if [ "$#" -ne 2 ]; then
+  echo "Usage: $0 IN_DIR OUT_DIR" >&2
   exit 1
 fi
 
-NEX_IN="$1"
-OUT="$2"
-MODEL="$3"
-SCEN="$4"
-
-IN_DIR="${NEX_IN}/${MODEL}/${SCEN}"
-OUT_ROOT="${OUT}/${MODEL}/${SCEN}"
-
+IN_DIR="$1"
+OUT_ROOT="$2"
 mkdir -p "${OUT_ROOT}"
 
 TAS="${IN_DIR}/tas_ERA5_day_gr025_1979-2020.nc"
