@@ -105,7 +105,7 @@ f_tw_ge35,ndays_tw_ge35,f_wbgt_ge30,ndays_wbgt_ge30,f_wbgt_ge32,ndays_wbgt_ge32 
 # -----------------------------
 # Run per year
 # -----------------------------
-for Y in $(seq 1979 2020); do
+for Y in $(seq 1991 2020); do
   compute_year "${Y}"
 done
 
