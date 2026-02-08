@@ -1,0 +1,43 @@
+Assuming unrestricted shared filesystem usage.
+host: CosmosClimae
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 3
+Rules claiming more threads will be scaled down.
+Job stats:
+job                           count
+--------------------------  -------
+all                               1
+compute_historical                1
+compute_ssp126                    1
+compute_ssp245                    1
+era5_monthly_1991_2020            1
+future_pack                       7
+pseudo_hist_pack_1991_2020        1
+total                            13
+
+Select jobs to execute...
+Execute 3 jobs...
+[Sun Feb  8 17:15:28 2026]
+localrule future_pack:
+    input: /mnt/c/Data/HEAT_STRESS_MONTHLY/MPI-ESM1-2-HR/ssp245/HEATSTRESS_mon_MPI-ESM1-2-HR_ssp245_2020-2100.nc
+    output: /mnt/c/Data/HEAT_STRESS_MONTHLY/MPI-ESM1-2-HR/packs/HEATSTRESS_pack_MPI-ESM1-2-HR_ssp245_2041-2070.nc
+    jobid: 35
+    reason: Missing output files: /mnt/c/Data/HEAT_STRESS_MONTHLY/MPI-ESM1-2-HR/packs/HEATSTRESS_pack_MPI-ESM1-2-HR_ssp245_2041-2070.nc
+    wildcards: model=MPI-ESM1-2-HR, scen=ssp245, win=2041-2070
+    resources: tmpdir=/tmp
+[Sun Feb  8 17:15:28 2026]
+localrule compute_historical:
+    output: /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/historical/HEATSTRESS_mon_MRI-ESM2-0_historical_1991-2014.nc
+    jobid: 4
+    reason: Missing output files: /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/historical/HEATSTRESS_mon_MRI-ESM2-0_historical_1991-2014.nc
+    wildcards: model=MRI-ESM2-0
+    resources: tmpdir=/tmp
+[Sun Feb  8 17:15:28 2026]
+localrule compute_ssp245:
+    output: /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/ssp245/HEATSTRESS_mon_MRI-ESM2-0_ssp245_2020-2100.nc
+    jobid: 14
+    reason: Missing output files: /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/ssp245/HEATSTRESS_mon_MRI-ESM2-0_ssp245_2020-2100.nc
+    wildcards: model=MRI-ESM2-0
+    resources: tmpdir=/tmp
+Select jobs to execute...

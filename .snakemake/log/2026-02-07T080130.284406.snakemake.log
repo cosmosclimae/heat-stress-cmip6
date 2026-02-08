@@ -1,0 +1,106 @@
+Assuming unrestricted shared filesystem usage.
+host: CosmosClimae
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Job stats:
+job                           count
+--------------------------  -------
+all                               1
+compute_historical                3
+compute_ssp126                    4
+compute_ssp245                    4
+compute_ssp585                    5
+era5_monthly_1991_2020            1
+future_pack                      30
+pseudo_hist_pack_1991_2020        5
+total                            53
+
+Select jobs to execute...
+Execute 4 jobs...
+[Sat Feb  7 08:01:31 2026]
+localrule compute_ssp585:
+    output: /mnt/c/Data/HEAT_STRESS_MONTHLY/GFDL-ESM4/ssp585/HEATSTRESS_mon_GFDL-ESM4_ssp585_2020-2100.nc
+    jobid: 21
+    reason: Missing output files: /mnt/c/Data/HEAT_STRESS_MONTHLY/GFDL-ESM4/ssp585/HEATSTRESS_mon_GFDL-ESM4_ssp585_2020-2100.nc
+    wildcards: model=GFDL-ESM4
+    resources: tmpdir=/tmp
+[Sat Feb  7 08:01:31 2026]
+localrule era5_monthly_1991_2020:
+    output: /mnt/e/CMIP6/ERA5/derived/HEATSTRESS_mon_ERA5_gr025_1991-2020.nc
+    jobid: 1
+    reason: Missing output files: /mnt/e/CMIP6/ERA5/derived/HEATSTRESS_mon_ERA5_gr025_1991-2020.nc
+    resources: tmpdir=/tmp
+[Sat Feb  7 08:01:31 2026]
+localrule compute_ssp585:
+    output: /mnt/c/Data/HEAT_STRESS_MONTHLY/UKESM1-0-LL/ssp585/HEATSTRESS_mon_UKESM1-0-LL_ssp585_2020-2100.nc
+    jobid: 20
+    reason: Missing output files: /mnt/c/Data/HEAT_STRESS_MONTHLY/UKESM1-0-LL/ssp585/HEATSTRESS_mon_UKESM1-0-LL_ssp585_2020-2100.nc
+    wildcards: model=UKESM1-0-LL
+    resources: tmpdir=/tmp
+[Sat Feb  7 08:01:31 2026]
+localrule future_pack:
+    input: /mnt/c/Data/HEAT_STRESS_MONTHLY/MPI-ESM1-2-HR/ssp126/HEATSTRESS_mon_MPI-ESM1-2-HR_ssp126_2015-2100.nc
+    output: /mnt/c/Data/HEAT_STRESS_MONTHLY/MPI-ESM1-2-HR/packs/HEATSTRESS_pack_MPI-ESM1-2-HR_ssp126_2071-2100.nc
+    jobid: 34
+    reason: Missing output files: /mnt/c/Data/HEAT_STRESS_MONTHLY/MPI-ESM1-2-HR/packs/HEATSTRESS_pack_MPI-ESM1-2-HR_ssp126_2071-2100.nc
+    wildcards: model=MPI-ESM1-2-HR, scen=ssp126, win=2071-2100
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Sat Feb  7 08:02:50 2026]
+Finished jobid: 34 (Rule: future_pack)
+1 of 53 steps (2%) done
+Execute 1 jobs...
+[Sat Feb  7 08:02:50 2026]
+localrule compute_historical:
+    output: /mnt/c/Data/HEAT_STRESS_MONTHLY/IPSL-CM6A-LR/historical/HEATSTRESS_mon_IPSL-CM6A-LR_historical_1991-2014.nc
+    jobid: 2
+    reason: Missing output files: /mnt/c/Data/HEAT_STRESS_MONTHLY/IPSL-CM6A-LR/historical/HEATSTRESS_mon_IPSL-CM6A-LR_historical_1991-2014.nc
+    wildcards: model=IPSL-CM6A-LR
+    resources: tmpdir=/tmp
+Select jobs to execute...
+RuleException:
+CalledProcessError in file "/mnt/e/Project_SNAKE/heat-stress-cmip6/Snakefile", line 67:
+Command 'set -euo pipefail;  bash pipeline/heatstress_nexgddp_monthly_snake.sh /mnt/e/CMIP6/NEX-GDDP /mnt/c/Data/HEAT_STRESS_MONTHLY GFDL-ESM4 ssp585' died with <Signals.SIGTERM: 15>.
+RuleException:
+CalledProcessError in file "/mnt/e/Project_SNAKE/heat-stress-cmip6/Snakefile", line 49:
+Command 'set -euo pipefail;  bash pipeline/heatstress_nexgddp_monthly_snake.sh /mnt/e/CMIP6/NEX-GDDP /mnt/c/Data/HEAT_STRESS_MONTHLY IPSL-CM6A-LR historical' died with <Signals.SIGTERM: 15>.
+RuleException:
+CalledProcessError in file "/mnt/e/Project_SNAKE/heat-stress-cmip6/Snakefile", line 67:
+Command 'set -euo pipefail;  bash pipeline/heatstress_nexgddp_monthly_snake.sh /mnt/e/CMIP6/NEX-GDDP /mnt/c/Data/HEAT_STRESS_MONTHLY UKESM1-0-LL ssp585' died with <Signals.SIGTERM: 15>.
+[Sat Feb  7 09:03:12 2026]
+Error in rule compute_ssp585:
+    message: None
+    jobid: 21
+    output: /mnt/c/Data/HEAT_STRESS_MONTHLY/GFDL-ESM4/ssp585/HEATSTRESS_mon_GFDL-ESM4_ssp585_2020-2100.nc
+    shell:
+        bash pipeline/heatstress_nexgddp_monthly_snake.sh /mnt/e/CMIP6/NEX-GDDP /mnt/c/Data/HEAT_STRESS_MONTHLY GFDL-ESM4 ssp585
+        (command exited with non-zero exit code)
+[Sat Feb  7 09:03:12 2026]
+Error in rule compute_historical:
+    message: None
+    jobid: 2
+    output: /mnt/c/Data/HEAT_STRESS_MONTHLY/IPSL-CM6A-LR/historical/HEATSTRESS_mon_IPSL-CM6A-LR_historical_1991-2014.nc
+    shell:
+        bash pipeline/heatstress_nexgddp_monthly_snake.sh /mnt/e/CMIP6/NEX-GDDP /mnt/c/Data/HEAT_STRESS_MONTHLY IPSL-CM6A-LR historical
+        (command exited with non-zero exit code)
+[Sat Feb  7 09:03:12 2026]
+Error in rule compute_ssp585:
+    message: None
+    jobid: 20
+    output: /mnt/c/Data/HEAT_STRESS_MONTHLY/UKESM1-0-LL/ssp585/HEATSTRESS_mon_UKESM1-0-LL_ssp585_2020-2100.nc
+    shell:
+        bash pipeline/heatstress_nexgddp_monthly_snake.sh /mnt/e/CMIP6/NEX-GDDP /mnt/c/Data/HEAT_STRESS_MONTHLY UKESM1-0-LL ssp585
+        (command exited with non-zero exit code)
+RuleException:
+CalledProcessError in file "/mnt/e/Project_SNAKE/heat-stress-cmip6/Snakefile", line 43:
+Command 'set -euo pipefail;  bash pipeline/heatstress_era5_monthly_snake.sh /mnt/e/CMIP6/ERA5 /mnt/e/CMIP6/ERA5/derived' died with <Signals.SIGTERM: 15>.
+[Sat Feb  7 09:03:12 2026]
+Error in rule era5_monthly_1991_2020:
+    message: None
+    jobid: 1
+    output: /mnt/e/CMIP6/ERA5/derived/HEATSTRESS_mon_ERA5_gr025_1991-2020.nc
+    shell:
+        bash pipeline/heatstress_era5_monthly_snake.sh /mnt/e/CMIP6/ERA5 /mnt/e/CMIP6/ERA5/derived
+        (command exited with non-zero exit code)

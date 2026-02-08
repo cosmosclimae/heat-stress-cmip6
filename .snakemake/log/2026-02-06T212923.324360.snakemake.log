@@ -60,3 +60,22 @@ localrule compute_ssp126:
 [Fri Feb  6 23:23:21 2026]
 Finished jobid: 5 (Rule: compute_historical)
 1 of 56 steps (2%) done
+[Sat Feb  7 03:41:49 2026]
+Finished jobid: 15 (Rule: compute_ssp245)
+2 of 56 steps (4%) done
+[Sat Feb  7 04:07:08 2026]
+Finished jobid: 8 (Rule: compute_ssp126)
+3 of 56 steps (5%) done
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Sat Feb  7 04:07:08 2026]
+Error in rule era5_monthly_1991_2020:
+    message: None
+    jobid: 1
+    output: /mnt/e/CMIP6/ERA5/derived/HEATSTRESS_mon_ERA5_gr025_1991-2020.nc
+    shell:
+        bash pipeline/heatstress_era5_monthly_snake.sh /mnt/e/CMIP6/ERA5 /mnt/e/CMIP6/ERA5/derived
+        (command exited with non-zero exit code)
+Complete log(s): /mnt/e/Project_SNAKE/heat-stress-cmip6/.snakemake/log/2026-02-06T212923.324360.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.
