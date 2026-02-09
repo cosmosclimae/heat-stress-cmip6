@@ -1,0 +1,147 @@
+Assuming unrestricted shared filesystem usage.
+host: CosmosClimae
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 3
+Rules claiming more threads will be scaled down.
+Job stats:
+job                           count
+--------------------------  -------
+all                               1
+compute_historical                1
+compute_ssp126                    1
+compute_ssp245                    1
+era5_monthly_1991_2020            1
+future_pack                       4
+pseudo_hist_pack_1991_2020        1
+total                            10
+
+Select jobs to execute...
+Execute 3 jobs...
+[Sun Feb  8 18:09:21 2026]
+localrule compute_ssp126:
+    output: /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/ssp126/HEATSTRESS_mon_MRI-ESM2-0_ssp126_2015-2100.nc
+    jobid: 9
+    reason: Missing output files: /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/ssp126/HEATSTRESS_mon_MRI-ESM2-0_ssp126_2015-2100.nc
+    wildcards: model=MRI-ESM2-0
+    resources: tmpdir=/tmp
+[Sun Feb  8 18:09:21 2026]
+localrule compute_ssp245:
+    output: /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/ssp245/HEATSTRESS_mon_MRI-ESM2-0_ssp245_2020-2100.nc
+    jobid: 14
+    reason: Missing output files: /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/ssp245/HEATSTRESS_mon_MRI-ESM2-0_ssp245_2020-2100.nc
+    wildcards: model=MRI-ESM2-0
+    resources: tmpdir=/tmp
+[Sun Feb  8 18:09:21 2026]
+localrule era5_monthly_1991_2020:
+    output: /mnt/e/CMIP6/ERA5/derived/HEATSTRESS_mon_ERA5_gr025_1991-2020.nc
+    jobid: 1
+    reason: Missing output files: /mnt/e/CMIP6/ERA5/derived/HEATSTRESS_mon_ERA5_gr025_1991-2020.nc
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Sun Feb  8 23:16:00 2026]
+Finished jobid: 14 (Rule: compute_ssp245)
+1 of 10 steps (10%) done
+Execute 1 jobs...
+[Sun Feb  8 23:16:00 2026]
+localrule compute_historical:
+    output: /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/historical/HEATSTRESS_mon_MRI-ESM2-0_historical_1991-2014.nc
+    jobid: 4
+    reason: Missing output files: /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/historical/HEATSTRESS_mon_MRI-ESM2-0_historical_1991-2014.nc
+    wildcards: model=MRI-ESM2-0
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Sun Feb  8 23:21:01 2026]
+Finished jobid: 9 (Rule: compute_ssp126)
+2 of 10 steps (20%) done
+Execute 1 jobs...
+[Sun Feb  8 23:21:01 2026]
+localrule future_pack:
+    input: /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/ssp126/HEATSTRESS_mon_MRI-ESM2-0_ssp126_2015-2100.nc
+    output: /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/packs/HEATSTRESS_pack_MRI-ESM2-0_ssp126_2041-2070.nc
+    jobid: 39
+    reason: Missing output files: /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/packs/HEATSTRESS_pack_MRI-ESM2-0_ssp126_2041-2070.nc; Input files updated by another job: /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/ssp126/HEATSTRESS_mon_MRI-ESM2-0_ssp126_2015-2100.nc
+    wildcards: model=MRI-ESM2-0, scen=ssp126, win=2041-2070
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Sun Feb  8 23:22:14 2026]
+Finished jobid: 39 (Rule: future_pack)
+3 of 10 steps (30%) done
+Execute 1 jobs...
+[Sun Feb  8 23:22:14 2026]
+localrule future_pack:
+    input: /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/ssp126/HEATSTRESS_mon_MRI-ESM2-0_ssp126_2015-2100.nc
+    output: /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/packs/HEATSTRESS_pack_MRI-ESM2-0_ssp126_2071-2100.nc
+    jobid: 40
+    reason: Missing output files: /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/packs/HEATSTRESS_pack_MRI-ESM2-0_ssp126_2071-2100.nc; Input files updated by another job: /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/ssp126/HEATSTRESS_mon_MRI-ESM2-0_ssp126_2015-2100.nc
+    wildcards: model=MRI-ESM2-0, scen=ssp126, win=2071-2100
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Sun Feb  8 23:23:28 2026]
+Finished jobid: 40 (Rule: future_pack)
+4 of 10 steps (40%) done
+Execute 1 jobs...
+[Sun Feb  8 23:23:28 2026]
+localrule future_pack:
+    input: /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/ssp245/HEATSTRESS_mon_MRI-ESM2-0_ssp245_2020-2100.nc
+    output: /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/packs/HEATSTRESS_pack_MRI-ESM2-0_ssp245_2071-2100.nc
+    jobid: 42
+    reason: Missing output files: /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/packs/HEATSTRESS_pack_MRI-ESM2-0_ssp245_2071-2100.nc; Input files updated by another job: /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/ssp245/HEATSTRESS_mon_MRI-ESM2-0_ssp245_2020-2100.nc
+    wildcards: model=MRI-ESM2-0, scen=ssp245, win=2071-2100
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Sun Feb  8 23:24:59 2026]
+Finished jobid: 42 (Rule: future_pack)
+5 of 10 steps (50%) done
+Execute 1 jobs...
+[Sun Feb  8 23:24:59 2026]
+localrule future_pack:
+    input: /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/ssp245/HEATSTRESS_mon_MRI-ESM2-0_ssp245_2020-2100.nc
+    output: /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/packs/HEATSTRESS_pack_MRI-ESM2-0_ssp245_2041-2070.nc
+    jobid: 41
+    reason: Missing output files: /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/packs/HEATSTRESS_pack_MRI-ESM2-0_ssp245_2041-2070.nc; Input files updated by another job: /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/ssp245/HEATSTRESS_mon_MRI-ESM2-0_ssp245_2020-2100.nc
+    wildcards: model=MRI-ESM2-0, scen=ssp245, win=2041-2070
+    resources: tmpdir=/tmp
+[Sun Feb  8 23:26:29 2026]
+Finished jobid: 41 (Rule: future_pack)
+6 of 10 steps (60%) done
+[Mon Feb  9 00:17:30 2026]
+Finished jobid: 4 (Rule: compute_historical)
+7 of 10 steps (70%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Mon Feb  9 00:17:30 2026]
+localrule pseudo_hist_pack_1991_2020:
+    input: /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/historical/HEATSTRESS_mon_MRI-ESM2-0_historical_1991-2014.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/ssp126/HEATSTRESS_mon_MRI-ESM2-0_ssp126_2015-2100.nc
+    output: /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/packs/HEATSTRESS_pack_MRI-ESM2-0_pseudoHist_1991-2020.nc
+    jobid: 24
+    reason: Missing output files: /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/packs/HEATSTRESS_pack_MRI-ESM2-0_pseudoHist_1991-2020.nc; Input files updated by another job: /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/historical/HEATSTRESS_mon_MRI-ESM2-0_historical_1991-2014.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/ssp126/HEATSTRESS_mon_MRI-ESM2-0_ssp126_2015-2100.nc
+    wildcards: model=MRI-ESM2-0
+    resources: tmpdir=/tmp
+[Mon Feb  9 00:19:31 2026]
+Finished jobid: 24 (Rule: pseudo_hist_pack_1991_2020)
+8 of 10 steps (80%) done
+RuleException:
+CalledProcessError in file "/mnt/e/Project_SNAKE/heat-stress-cmip6/Snakefile", line 43:
+Command 'set -euo pipefail;  bash pipeline/heatstress_era5_monthly_snake.sh /mnt/e/CMIP6/ERA5 /mnt/e/CMIP6/ERA5/derived' returned non-zero exit status 1.
+[Mon Feb  9 03:12:58 2026]
+Error in rule era5_monthly_1991_2020:
+    message: None
+    jobid: 1
+    output: /mnt/e/CMIP6/ERA5/derived/HEATSTRESS_mon_ERA5_gr025_1991-2020.nc
+    shell:
+        bash pipeline/heatstress_era5_monthly_snake.sh /mnt/e/CMIP6/ERA5 /mnt/e/CMIP6/ERA5/derived
+        (command exited with non-zero exit code)
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Mon Feb  9 03:12:58 2026]
+Error in rule era5_monthly_1991_2020:
+    message: None
+    jobid: 1
+    output: /mnt/e/CMIP6/ERA5/derived/HEATSTRESS_mon_ERA5_gr025_1991-2020.nc
+    shell:
+        bash pipeline/heatstress_era5_monthly_snake.sh /mnt/e/CMIP6/ERA5 /mnt/e/CMIP6/ERA5/derived
+        (command exited with non-zero exit code)
+Complete log(s): /mnt/e/Project_SNAKE/heat-stress-cmip6/.snakemake/log/2026-02-08T180921.084386.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

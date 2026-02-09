@@ -116,7 +116,7 @@ echo "[INFO] Concatenating yearly files -> ${OUT_MON_ALL}"
 
 # Build ordered list to avoid glob-order surprises
 YEAR_FILES=()
-for Y in $(seq 1979 2020); do
+for Y in $(seq 1991 2020); do
   YEAR_FILES+=("${BYYEAR_DIR}/HEATSTRESS_mon_ERA5_gr025_${Y}.nc")
 done
 
