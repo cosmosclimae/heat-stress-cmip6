@@ -3,7 +3,7 @@ nexgddp_out: /mnt/c/Data/HEAT_STRESS_MONTHLY
 
 era5_in: /mnt/e/CMIP6/ERA5
 era5_outdir: /mnt/e/CMIP6/ERA5/derived
-era5_pack: /mnt/e/CMIP6/ERA5/derived/HEATSTRESS_mon_ERA5_gr025_1991-2020.nc
+era5_pack: /mnt/c/Data/HEAT_STRESS_MONTHLY/ERA5/packs/HEATSTRESS_mon_ERA5_gr025_1991-2020.nc
 
 models:
   - IPSL-CM6A-LR

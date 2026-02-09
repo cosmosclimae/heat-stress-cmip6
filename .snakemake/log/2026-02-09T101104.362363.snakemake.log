@@ -1,0 +1,109 @@
+Assuming unrestricted shared filesystem usage.
+host: CosmosClimae
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 3
+Rules claiming more threads will be scaled down.
+Job stats:
+job               count
+--------------  -------
+all                   1
+ensemble_stats        7
+total                 8
+
+Select jobs to execute...
+Execute 3 jobs...
+[Mon Feb  9 10:11:05 2026]
+localrule ensemble_stats:
+    input: /mnt/c/Data/HEAT_STRESS_MONTHLY/IPSL-CM6A-LR/packs/HEATSTRESS_pack_IPSL-CM6A-LR_ssp585_2071-2100.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/MPI-ESM1-2-HR/packs/HEATSTRESS_pack_MPI-ESM1-2-HR_ssp585_2071-2100.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/packs/HEATSTRESS_pack_MRI-ESM2-0_ssp585_2071-2100.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/UKESM1-0-LL/packs/HEATSTRESS_pack_UKESM1-0-LL_ssp585_2071-2100.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/GFDL-ESM4/packs/HEATSTRESS_pack_GFDL-ESM4_ssp585_2071-2100.nc
+    output: /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp585/2071-2100/HEATSTRESS_ensmean_ssp585_2071-2100.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp585/2071-2100/HEATSTRESS_ensmin_ssp585_2071-2100.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp585/2071-2100/HEATSTRESS_ensmax_ssp585_2071-2100.nc
+    jobid: 63
+    reason: Missing output files: /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp585/2071-2100/HEATSTRESS_ensmean_ssp585_2071-2100.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp585/2071-2100/HEATSTRESS_ensmin_ssp585_2071-2100.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp585/2071-2100/HEATSTRESS_ensmax_ssp585_2071-2100.nc
+    wildcards: scen=ssp585, win=2071-2100
+    resources: tmpdir=/tmp
+[Mon Feb  9 10:11:05 2026]
+localrule ensemble_stats:
+    input: /mnt/c/Data/HEAT_STRESS_MONTHLY/IPSL-CM6A-LR/packs/HEATSTRESS_pack_IPSL-CM6A-LR_ssp245_2071-2100.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/MPI-ESM1-2-HR/packs/HEATSTRESS_pack_MPI-ESM1-2-HR_ssp245_2071-2100.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/packs/HEATSTRESS_pack_MRI-ESM2-0_ssp245_2071-2100.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/UKESM1-0-LL/packs/HEATSTRESS_pack_UKESM1-0-LL_ssp245_2071-2100.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/GFDL-ESM4/packs/HEATSTRESS_pack_GFDL-ESM4_ssp245_2071-2100.nc
+    output: /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp245/2071-2100/HEATSTRESS_ensmean_ssp245_2071-2100.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp245/2071-2100/HEATSTRESS_ensmin_ssp245_2071-2100.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp245/2071-2100/HEATSTRESS_ensmax_ssp245_2071-2100.nc
+    jobid: 61
+    reason: Missing output files: /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp245/2071-2100/HEATSTRESS_ensmin_ssp245_2071-2100.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp245/2071-2100/HEATSTRESS_ensmean_ssp245_2071-2100.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp245/2071-2100/HEATSTRESS_ensmax_ssp245_2071-2100.nc
+    wildcards: scen=ssp245, win=2071-2100
+    resources: tmpdir=/tmp
+[Mon Feb  9 10:11:05 2026]
+localrule ensemble_stats:
+    input: /mnt/c/Data/HEAT_STRESS_MONTHLY/IPSL-CM6A-LR/packs/HEATSTRESS_pack_IPSL-CM6A-LR_ssp585_2041-2070.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/MPI-ESM1-2-HR/packs/HEATSTRESS_pack_MPI-ESM1-2-HR_ssp585_2041-2070.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/packs/HEATSTRESS_pack_MRI-ESM2-0_ssp585_2041-2070.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/UKESM1-0-LL/packs/HEATSTRESS_pack_UKESM1-0-LL_ssp585_2041-2070.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/GFDL-ESM4/packs/HEATSTRESS_pack_GFDL-ESM4_ssp585_2041-2070.nc
+    output: /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp585/2041-2070/HEATSTRESS_ensmean_ssp585_2041-2070.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp585/2041-2070/HEATSTRESS_ensmin_ssp585_2041-2070.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp585/2041-2070/HEATSTRESS_ensmax_ssp585_2041-2070.nc
+    jobid: 62
+    reason: Missing output files: /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp585/2041-2070/HEATSTRESS_ensmin_ssp585_2041-2070.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp585/2041-2070/HEATSTRESS_ensmax_ssp585_2041-2070.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp585/2041-2070/HEATSTRESS_ensmean_ssp585_2041-2070.nc
+    wildcards: scen=ssp585, win=2041-2070
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Mon Feb  9 10:22:11 2026]
+Finished jobid: 61 (Rule: ensemble_stats)
+1 of 8 steps (12%) done
+Execute 1 jobs...
+[Mon Feb  9 10:22:11 2026]
+localrule ensemble_stats:
+    input: /mnt/c/Data/HEAT_STRESS_MONTHLY/IPSL-CM6A-LR/packs/HEATSTRESS_pack_IPSL-CM6A-LR_ssp126_2041-2070.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/MPI-ESM1-2-HR/packs/HEATSTRESS_pack_MPI-ESM1-2-HR_ssp126_2041-2070.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/packs/HEATSTRESS_pack_MRI-ESM2-0_ssp126_2041-2070.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/UKESM1-0-LL/packs/HEATSTRESS_pack_UKESM1-0-LL_ssp126_2041-2070.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/GFDL-ESM4/packs/HEATSTRESS_pack_GFDL-ESM4_ssp126_2041-2070.nc
+    output: /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp126/2041-2070/HEATSTRESS_ensmean_ssp126_2041-2070.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp126/2041-2070/HEATSTRESS_ensmin_ssp126_2041-2070.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp126/2041-2070/HEATSTRESS_ensmax_ssp126_2041-2070.nc
+    jobid: 58
+    reason: Missing output files: /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp126/2041-2070/HEATSTRESS_ensmean_ssp126_2041-2070.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp126/2041-2070/HEATSTRESS_ensmin_ssp126_2041-2070.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp126/2041-2070/HEATSTRESS_ensmax_ssp126_2041-2070.nc
+    wildcards: scen=ssp126, win=2041-2070
+    resources: tmpdir=/tmp
+[Mon Feb  9 10:22:11 2026]
+Finished jobid: 62 (Rule: ensemble_stats)
+2 of 8 steps (25%) done
+[Mon Feb  9 10:22:12 2026]
+Finished jobid: 63 (Rule: ensemble_stats)
+3 of 8 steps (38%) done
+Select jobs to execute...
+Execute 2 jobs...
+[Mon Feb  9 10:22:12 2026]
+localrule ensemble_stats:
+    input: /mnt/c/Data/HEAT_STRESS_MONTHLY/IPSL-CM6A-LR/packs/HEATSTRESS_pack_IPSL-CM6A-LR_ssp245_2041-2070.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/MPI-ESM1-2-HR/packs/HEATSTRESS_pack_MPI-ESM1-2-HR_ssp245_2041-2070.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/packs/HEATSTRESS_pack_MRI-ESM2-0_ssp245_2041-2070.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/UKESM1-0-LL/packs/HEATSTRESS_pack_UKESM1-0-LL_ssp245_2041-2070.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/GFDL-ESM4/packs/HEATSTRESS_pack_GFDL-ESM4_ssp245_2041-2070.nc
+    output: /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp245/2041-2070/HEATSTRESS_ensmean_ssp245_2041-2070.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp245/2041-2070/HEATSTRESS_ensmin_ssp245_2041-2070.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp245/2041-2070/HEATSTRESS_ensmax_ssp245_2041-2070.nc
+    jobid: 60
+    reason: Missing output files: /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp245/2041-2070/HEATSTRESS_ensmax_ssp245_2041-2070.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp245/2041-2070/HEATSTRESS_ensmin_ssp245_2041-2070.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp245/2041-2070/HEATSTRESS_ensmean_ssp245_2041-2070.nc
+    wildcards: scen=ssp245, win=2041-2070
+    resources: tmpdir=/tmp
+[Mon Feb  9 10:22:12 2026]
+localrule ensemble_stats:
+    input: /mnt/c/Data/HEAT_STRESS_MONTHLY/IPSL-CM6A-LR/packs/HEATSTRESS_pack_IPSL-CM6A-LR_pseudoHist_1991-2020.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/MPI-ESM1-2-HR/packs/HEATSTRESS_pack_MPI-ESM1-2-HR_pseudoHist_1991-2020.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/packs/HEATSTRESS_pack_MRI-ESM2-0_pseudoHist_1991-2020.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/UKESM1-0-LL/packs/HEATSTRESS_pack_UKESM1-0-LL_pseudoHist_1991-2020.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/GFDL-ESM4/packs/HEATSTRESS_pack_GFDL-ESM4_pseudoHist_1991-2020.nc
+    output: /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/pseudoHist/1991-2020/HEATSTRESS_ensmean_pseudoHist_1991-2020.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/pseudoHist/1991-2020/HEATSTRESS_ensmin_pseudoHist_1991-2020.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/pseudoHist/1991-2020/HEATSTRESS_ensmax_pseudoHist_1991-2020.nc
+    jobid: 57
+    reason: Missing output files: /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/pseudoHist/1991-2020/HEATSTRESS_ensmax_pseudoHist_1991-2020.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/pseudoHist/1991-2020/HEATSTRESS_ensmean_pseudoHist_1991-2020.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/pseudoHist/1991-2020/HEATSTRESS_ensmin_pseudoHist_1991-2020.nc
+    wildcards: scen=pseudoHist, win=1991-2020
+    resources: tmpdir=/tmp
+Select jobs to execute...
+RuleException:
+CalledProcessError in file "/mnt/e/Project_SNAKE/heat-stress-cmip6/Snakefile", line 121:
+Command 'set -euo pipefail;  bash pipeline/heatstress_ensemble_stats.sh /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp245/2041-2070/HEATSTRESS_ensmean_ssp245_2041-2070.nc /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp245/2041-2070/HEATSTRESS_ensmin_ssp245_2041-2070.nc /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp245/2041-2070/HEATSTRESS_ensmax_ssp245_2041-2070.nc /mnt/c/Data/HEAT_STRESS_MONTHLY/IPSL-CM6A-LR/packs/HEATSTRESS_pack_IPSL-CM6A-LR_ssp245_2041-2070.nc /mnt/c/Data/HEAT_STRESS_MONTHLY/MPI-ESM1-2-HR/packs/HEATSTRESS_pack_MPI-ESM1-2-HR_ssp245_2041-2070.nc /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/packs/HEATSTRESS_pack_MRI-ESM2-0_ssp245_2041-2070.nc /mnt/c/Data/HEAT_STRESS_MONTHLY/UKESM1-0-LL/packs/HEATSTRESS_pack_UKESM1-0-LL_ssp245_2041-2070.nc /mnt/c/Data/HEAT_STRESS_MONTHLY/GFDL-ESM4/packs/HEATSTRESS_pack_GFDL-ESM4_ssp245_2041-2070.nc' returned non-zero exit status 1.
+[Mon Feb  9 10:22:12 2026]
+Error in rule ensemble_stats:
+    message: None
+    jobid: 60
+    input: /mnt/c/Data/HEAT_STRESS_MONTHLY/IPSL-CM6A-LR/packs/HEATSTRESS_pack_IPSL-CM6A-LR_ssp245_2041-2070.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/MPI-ESM1-2-HR/packs/HEATSTRESS_pack_MPI-ESM1-2-HR_ssp245_2041-2070.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/packs/HEATSTRESS_pack_MRI-ESM2-0_ssp245_2041-2070.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/UKESM1-0-LL/packs/HEATSTRESS_pack_UKESM1-0-LL_ssp245_2041-2070.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/GFDL-ESM4/packs/HEATSTRESS_pack_GFDL-ESM4_ssp245_2041-2070.nc
+    output: /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp245/2041-2070/HEATSTRESS_ensmean_ssp245_2041-2070.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp245/2041-2070/HEATSTRESS_ensmin_ssp245_2041-2070.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp245/2041-2070/HEATSTRESS_ensmax_ssp245_2041-2070.nc
+    shell:
+        bash pipeline/heatstress_ensemble_stats.sh /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp245/2041-2070/HEATSTRESS_ensmean_ssp245_2041-2070.nc /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp245/2041-2070/HEATSTRESS_ensmin_ssp245_2041-2070.nc /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp245/2041-2070/HEATSTRESS_ensmax_ssp245_2041-2070.nc /mnt/c/Data/HEAT_STRESS_MONTHLY/IPSL-CM6A-LR/packs/HEATSTRESS_pack_IPSL-CM6A-LR_ssp245_2041-2070.nc /mnt/c/Data/HEAT_STRESS_MONTHLY/MPI-ESM1-2-HR/packs/HEATSTRESS_pack_MPI-ESM1-2-HR_ssp245_2041-2070.nc /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/packs/HEATSTRESS_pack_MRI-ESM2-0_ssp245_2041-2070.nc /mnt/c/Data/HEAT_STRESS_MONTHLY/UKESM1-0-LL/packs/HEATSTRESS_pack_UKESM1-0-LL_ssp245_2041-2070.nc /mnt/c/Data/HEAT_STRESS_MONTHLY/GFDL-ESM4/packs/HEATSTRESS_pack_GFDL-ESM4_ssp245_2041-2070.nc
+        (command exited with non-zero exit code)
+[Mon Feb  9 10:32:01 2026]
+Finished jobid: 57 (Rule: ensemble_stats)
+4 of 8 steps (50%) done
+[Mon Feb  9 10:32:02 2026]
+Finished jobid: 58 (Rule: ensemble_stats)
+5 of 8 steps (62%) done
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Mon Feb  9 10:32:02 2026]
+Error in rule ensemble_stats:
+    message: None
+    jobid: 60
+    input: /mnt/c/Data/HEAT_STRESS_MONTHLY/IPSL-CM6A-LR/packs/HEATSTRESS_pack_IPSL-CM6A-LR_ssp245_2041-2070.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/MPI-ESM1-2-HR/packs/HEATSTRESS_pack_MPI-ESM1-2-HR_ssp245_2041-2070.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/packs/HEATSTRESS_pack_MRI-ESM2-0_ssp245_2041-2070.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/UKESM1-0-LL/packs/HEATSTRESS_pack_UKESM1-0-LL_ssp245_2041-2070.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/GFDL-ESM4/packs/HEATSTRESS_pack_GFDL-ESM4_ssp245_2041-2070.nc
+    output: /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp245/2041-2070/HEATSTRESS_ensmean_ssp245_2041-2070.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp245/2041-2070/HEATSTRESS_ensmin_ssp245_2041-2070.nc, /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp245/2041-2070/HEATSTRESS_ensmax_ssp245_2041-2070.nc
+    shell:
+        bash pipeline/heatstress_ensemble_stats.sh /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp245/2041-2070/HEATSTRESS_ensmean_ssp245_2041-2070.nc /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp245/2041-2070/HEATSTRESS_ensmin_ssp245_2041-2070.nc /mnt/c/Data/HEAT_STRESS_MONTHLY/ENSEMBLE/ssp245/2041-2070/HEATSTRESS_ensmax_ssp245_2041-2070.nc /mnt/c/Data/HEAT_STRESS_MONTHLY/IPSL-CM6A-LR/packs/HEATSTRESS_pack_IPSL-CM6A-LR_ssp245_2041-2070.nc /mnt/c/Data/HEAT_STRESS_MONTHLY/MPI-ESM1-2-HR/packs/HEATSTRESS_pack_MPI-ESM1-2-HR_ssp245_2041-2070.nc /mnt/c/Data/HEAT_STRESS_MONTHLY/MRI-ESM2-0/packs/HEATSTRESS_pack_MRI-ESM2-0_ssp245_2041-2070.nc /mnt/c/Data/HEAT_STRESS_MONTHLY/UKESM1-0-LL/packs/HEATSTRESS_pack_UKESM1-0-LL_ssp245_2041-2070.nc /mnt/c/Data/HEAT_STRESS_MONTHLY/GFDL-ESM4/packs/HEATSTRESS_pack_GFDL-ESM4_ssp245_2041-2070.nc
+        (command exited with non-zero exit code)
+Complete log(s): /mnt/e/Project_SNAKE/heat-stress-cmip6/.snakemake/log/2026-02-09T101104.362363.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

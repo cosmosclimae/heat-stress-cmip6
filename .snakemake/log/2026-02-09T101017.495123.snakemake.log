@@ -1,0 +1,2 @@
+RuleException in file "/mnt/e/Project_SNAKE/heat-stress-cmip6/Snakefile", line 107:
+Only input files can be specified as functions

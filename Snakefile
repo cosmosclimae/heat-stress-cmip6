@@ -23,6 +23,15 @@ def scen_file(model, scen):
         return f"{OUT}/{model}/ssp585/HEATSTRESS_mon_{model}_ssp585_2020-2100.nc"
     raise ValueError(f"Unknown scenario: {scen}")
 
+def pack_file(model, scen, win):
+    if scen == "pseudoHist":
+        return f"{OUT}/{model}/packs/HEATSTRESS_pack_{model}_pseudoHist_1991-2020.nc"
+    return f"{OUT}/{model}/packs/HEATSTRESS_pack_{model}_{scen}_{win}.nc"
+
+def ens_stat_file(stat, scen, win):
+    # stat in {"mean","zyg","min","max"} but we will use mean/min/max
+    return f"{OUT}/ENSEMBLE/{scen}/{win}/HEATSTRESS_ens{stat}_{scen}_{win}.nc"
+
 rule all:
     input:
         ERA5_PACK,
@@ -33,6 +42,11 @@ rule all:
         expand(f"{OUT}/{{model}}/packs/HEATSTRESS_pack_{{model}}_pseudoHist_1991-2020.nc", model=MODELS),
         expand(f"{OUT}/{{model}}/packs/HEATSTRESS_pack_{{model}}_{{scen}}_{{win}}.nc",
                model=MODELS,
+               scen=SSPS_FUTURE,
+               win=[w["name"] for w in FUTURE_WINDOWS]),
+        expand(ens_stat_file("{stat}", "pseudoHist", "1991-2020"), stat=["mean","min","max"]),
+        expand(ens_stat_file("{stat}", "{scen}", "{win}"),
+               stat=["mean","min","max"],
                scen=SSPS_FUTURE,
                win=[w["name"] for w in FUTURE_WINDOWS])
 
@@ -89,3 +103,19 @@ rule future_pack:
     shell:
         "mkdir -p $(dirname {output}) && "
         "cdo -L -z zip_5 seldate,{params.start},{params.end} {input} {output}"
+
+rule ensemble_stats:
+    input:
+        lambda wc: expand(
+            pack_file("{model}", wc.scen, wc.win),
+            model=MODELS
+        )
+    output:
+        mean = f"{OUT}/ENSEMBLE/{{scen}}/{{win}}/HEATSTRESS_ensmean_{{scen}}_{{win}}.nc",
+        min  = f"{OUT}/ENSEMBLE/{{scen}}/{{win}}/HEATSTRESS_ensmin_{{scen}}_{{win}}.nc",
+        max  = f"{OUT}/ENSEMBLE/{{scen}}/{{win}}/HEATSTRESS_ensmax_{{scen}}_{{win}}.nc"
+    wildcard_constraints:
+        scen="pseudoHist|ssp126|ssp245|ssp585"
+    shell:
+        "bash pipeline/heatstress_ensemble_stats.sh "
+        "{output.mean} {output.min} {output.max} {input}"
